@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Ubuntu&display=swap");
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: "Lato", sans-serif;
+    background-color: lightgray;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5rem;
+
+    .form-header {
+        margin: 0 20rem 0 20rem;
+    }
+
+    .w-12 {
+        margin: 1rem 20rem 1rem 20rem;
+
+        input[type=text],input[type=email],input[type=password] {
+            width: 98%;
+            padding: 6px;
+            border: none;
+            &:focus {
+                outline: none;
+            }
+        }
+        select {
+            width: 100px;
+            padding: 5px;
+            margin: 5px 5px;
+            border: none;
+            background-color: white;
+            &:focus {
+                outline: none;
+            }
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: mediumorchid;
+            font-size: large;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+
+            &:disabled {
+                background-color: thistle;
+                cursor: initial;
+            }
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            .form-group {
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
+.disable {
+    opacity: 0.5;
+}
+
+.footer {
+    // width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: mediumorchid;
+    color: white;
+    text-align: center;
+    position: fixed;
+}
+
+.login-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    background-color: gray;
+    
+    .footer-login-container {
+        position: relative;
+        margin: 2rem;
+
+        .btn {
+            padding: 1rem 20rem 1rem 20rem;
+            margin: 5px 0 5px 0;
+            font-size: large;
+            color: white;
+            background-color: mediumorchid;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    }
+}

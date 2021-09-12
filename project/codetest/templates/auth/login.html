@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container" id='container'>
+    <div class='form-header'>
+        <h1>Login</h1>
+    </div>
+    <form method='POST'>{% csrf_token %}
+        <div class="w-12">
+            {{form.email}}
+        </div>
+        <div class="w-12">
+            {{form.password}}
+        </div>
+        <div class="w-12">
+            <button type="submit" id='login-btn'>Login</button>
+        </div>
+    </form>
+</section>
+{% endblock content %}
+
+{% block footer %}
+<footer class='footer'>
+    <h1 class='footer-header'>Footer</h1>
+</footer>
+{% endblock footer %}

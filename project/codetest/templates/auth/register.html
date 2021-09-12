@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container {% if messages %}
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+    {% endif %}" id='container'>
+    <div class='form-header'>
+        <h1>Registration</h1>
+    </div>
+    <form method='POST' id='register-form'>{% csrf_token %}
+        {% if error_form %}
+        <div class="w-12">
+            {% for error in error_form %}
+            <p>{{error}}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="w-12">
+            {{form.mobile_number}}
+        </div>
+        <div class="w-12">
+            {{form.first_name}}
+        </div>
+        <div class="w-12">
+            {{form.last_name}}
+        </div>
+        <div class="w-12">
+            {{form.date_of_birth.label}}
+            <div class="row">
+                {{form.month}}
+                <select name="date" id="date" class='form-control'>
+                    <option value="">Date</option>
+                </select>
+                {{form.year}}
+            </div>
+            {{form.date_of_birth.as_hidden}}
+        </div>
+        <div class="w-12">
+            <div class="row">
+                <div class='form-group'>
+                    <input type="radio" name="gender" id="gender-male" value='Male' class='form-control'>
+                    <label for="gender-male">Male</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" name="gender" id="gender-female" value='Female' class='form-control'>
+                    <label for="gender-female">Female</label>
+                </div>
+            </div>
+        </div>
+        <div class="w-12">
+            {{form.email}}
+        </div>
+        <div class="w-12">
+            <button type="submit" id='register-btn'>Register</button>
+        </div>
+    </form>
+</section>
+{% endblock content %}
+
+{% block footer %}
+<footer class='footer'>
+    <h1 class='footer-header'>Footer</h1>
+    <div class="footer-login-container">
+        <a href="{% url 'login' %}" class="btn" id='login-btn'>Login</a>
+    </div>
+</footer>
+{% endblock footer %}
+
+{% block script %}
+<script>
+    $('.footer-login-container').hide()
+    $(document).ready(function () {
+        if ($('#container').hasClass('disable')) {
+            //Disable form
+            $('.form-control').prop('disabled', true)
+            $('#register-btn').prop('disabled', true)
+
+            //Set Footer Login
+            $('footer').removeClass('footer')
+            $('footer').addClass('login-footer')
+            $('.footer-header').hide()
+            $('.footer-login-container').show()
+        }
+    })
+
+    $('#id_month').change(function () {
+        month = parseInt($(this).val())
+        year = $('#id_year').val() != '' ? $('#id_year').val() : new Date().getFullYear()
+        date = $('#date').val()
+        setDateOption(month, year, date)
+    })
+
+    $('#id_year').change(function () {
+        year = $(this).val() != '' ? parseInt($(this).val()) : new Date().getFullYear()
+        month = $('#id_month').val() != '' ? $('#id_month').val() : 1
+        date = $('#date').val()
+        setDateOption(month, year, date)
+    })
+
+    $('#date').change(function () {
+        setDateOfBirth()
+    })
+
+    $('#register-form').submit(function (e) {
+        e.preventDefault()
+        if ($('#id_date_of_birth').val().length < 10) {
+            $('#id_date_of_birth').val(null)
+        }
+        e.currentTarget.submit()
+    })
+
+    function setDateOption(month, year, date) {
+        lastdate = new Date(year, month, 0)
+        $('#date').empty()
+        setOption('#date', 'Date', '')
+        for (i = 1; i <= lastdate.getDate(); i++) {
+            setOption('#date', i, i)
+        }
+        if (date <= lastdate.getDate()) {
+            //console.log(date)
+            //console.log(lastdate.getDate())
+            $('#date').val(date).change()
+        }
+    }
+
+    function setOption(id, text, value) {
+        option = new Option(text, value)
+        $(option).html(text)
+        $(id).append(option)
+    }
+
+    function setDateOfBirth() {
+        date = $('#date').val()
+        month = $('#id_month').val()
+        year = $('#id_year').val()
+
+        birth_month = month.length == 1 ? '0' + month : month
+        birth_date = date.length == 1 ? '0' + date : date
+        dob = year + '-' + birth_month + '-' + birth_date
+        $('#id_date_of_birth').val(dob)
+    }
+</script>
+{% endblock script %}

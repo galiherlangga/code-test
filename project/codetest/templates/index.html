@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container {% if messages %}
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+    {% endif %}" id='container'>
+    <div class='form-header'>
+        <h1>Code Test</h1>
+    </div>
+</section>
+{% endblock content %}
+
+{% block footer %}
+<footer class='footer'>
+    <h1 class='footer-header'>Footer</h1>
+</footer>
+{% endblock footer %}

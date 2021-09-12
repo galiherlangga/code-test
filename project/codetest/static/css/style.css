@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Ubuntu&display=swap");
+html,
+body {
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Lato", sans-serif;
+  background-color: lightgray;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-top: 5rem;
+}
+
+.container .form-header {
+  margin: 0 20rem 0 20rem;
+}
+
+.container .w-12 {
+  margin: 1rem 20rem 1rem 20rem;
+}
+
+.container .w-12 input[type=text], .container .w-12 input[type=email], .container .w-12 input[type=password] {
+  width: 98%;
+  padding: 6px;
+  border: none;
+}
+
+.container .w-12 input[type=text]:focus, .container .w-12 input[type=email]:focus, .container .w-12 input[type=password]:focus {
+  outline: none;
+}
+
+.container .w-12 select {
+  width: 100px;
+  padding: 5px;
+  margin: 5px 5px;
+  border: none;
+  background-color: white;
+}
+
+.container .w-12 select:focus {
+  outline: none;
+}
+
+.container .w-12 button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: mediumorchid;
+  font-size: large;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.container .w-12 button:disabled {
+  background-color: thistle;
+  cursor: initial;
+}
+
+.container .w-12 .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.container .w-12 .row .form-group {
+  margin-right: 15px;
+}
+
+.disable {
+  opacity: 0.5;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: mediumorchid;
+  color: white;
+  text-align: center;
+  position: fixed;
+}
+
+.login-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  background-color: gray;
+}
+
+.login-footer .footer-login-container {
+  position: relative;
+  margin: 2rem;
+}
+
+.login-footer .footer-login-container .btn {
+  padding: 1rem 20rem 1rem 20rem;
+  margin: 5px 0 5px 0;
+  font-size: large;
+  color: white;
+  background-color: mediumorchid;
+  border-radius: 5px;
+  text-decoration: none;
+}
+/*# sourceMappingURL=style.css.map */
