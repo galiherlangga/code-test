@@ -1,0 +1,12 @@
+*.pyc
+*~
+/.vscode
+__pycache__
+/env
+/venv
+*.sqlite3
+/project/codetest/migrations
+/static
+.DS_Store
+/project/project/config.ini
+/project/media
